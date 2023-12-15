@@ -8,7 +8,23 @@ export const Single = props => {
 	const params = useParams();
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
+			<div class="mb-3">
+				<h1>Add a New Contact</h1>
+  <label for="formGroupExampleInput" class="form-label">Full Name</label>
+  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder"/>
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2" class="form-label">Email</label>
+  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder"/>
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput" class="form-label">Phone</label>
+  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder"/>
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2" class="form-label">Address</label>
+  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder"/>
+</div>
 
 			<hr className="my-4" />
 

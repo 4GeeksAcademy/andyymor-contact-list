@@ -2,6 +2,7 @@ import React,{useContext} from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
 import {ContactCard} from "../component/contactCard.js"
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 	
@@ -15,7 +16,7 @@ export const Home = () => {
 				return(<li key={index}> <ContactCard contact = {contact} index = {index}/>  </li>)
 			})}
 		</ul>
-
+			<Link to={"/addContact"}>link </Link>
 	</div>
 	</div>
 );
