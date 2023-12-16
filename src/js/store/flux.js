@@ -25,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			addContact:async(fullName, email, phone, address) => {
-				const respone = await fetch("",{
+				const respone = await fetch("https://playground.4geeks.com/apis/fake/contact",{
 					method:"POST",
 					body: JSON.stringify({
 						full_name: fullName,
@@ -40,7 +40,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await respone.json()
 				setStore({contactList:[...getStore().contactList,data]})
 			}, 
-			updateContact: (contactId, fullName, email, phone, address) => {},
+			updateContact: (contactId, fullName, email, phone, address) => {
+				const respone = await fetch("https://playground.4geeks.com/apis/fake/contact"+ contactId,{
+					method:"PUT",
+					body: JSON.stringify({
+						full_name: fullName,
+						phone: phone,
+						email: email,
+						address: address,
+						agenda_slug: "agenda",
+						
+					}),
+					headers: {"Context-Type": "application/JSON"}
+				})
+				const data = await respone.json()
+				setStore({contactList:[...getStore().contactList,data]})
+			}
+			},
 			deleteContact: (contactId) => {}
 		
 		}
