@@ -32,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						phone: phone,
 						email: email,
 						address: address,
-						agenda_slug: "agenda",
+						agenda_slug: "andrewAgenda",
 						
 					}),
 					headers: {"Context-Type": "application/JSON"}
@@ -40,7 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await respone.json()
 				setStore({contactList:[...getStore().contactList,data]})
 			}, 
-			updateContact: (contactId, fullName, email, phone, address) => {
+			updateContact: async(contactId, fullName, email, phone, address) => {
 				const respone = await fetch("https://playground.4geeks.com/apis/fake/contact"+ contactId,{
 					method:"PUT",
 					body: JSON.stringify({
@@ -48,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						phone: phone,
 						email: email,
 						address: address,
-						agenda_slug: "agenda",
+						agenda_slug: "andrewAgenda",
 						
 					}),
 					headers: {"Context-Type": "application/JSON"}
@@ -57,9 +57,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({contactList:[...getStore().contactList,data]})
 			}
 			},
-			deleteContact: (contactId) => {}
-		
-		}
+			deleteContact: async(contactId) => {
+			const respone = await fetch("https://playground.4geeks.com/apis/fake/contact"+ contactId,{
+					method:"DELETE",
+					
+					headers: {"Context-Type": "application/JSON"}
+				})
+				const data = await respone.json()
+				setStore({contactList:store.contactList.filter((contact)=> contact.id !== contactId )})
+			},
+			getContacts: async() => {
+				const respone = await fetch ("https://playground.4geeks.com/apis/fake/contact/andrewAgenda" ) 
+				const data = await respone.json()
+				setStore({contactList:data})
+			}
 	};
 };
 
