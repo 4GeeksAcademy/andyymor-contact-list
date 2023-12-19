@@ -9,6 +9,7 @@ export const Home = () => {
 	const {store, actions} = useContext(Context)
 	
 	return  (
+		<>
 	<div className="text-center mt-5">
 	<div className="container justify-content-center">
 		<ul>
@@ -19,5 +20,8 @@ export const Home = () => {
 			<Link to={"/addContact"}>link </Link>
 	</div>
 	</div>
+	<button ></button>
+	</>
 );
+
 }

@@ -3,19 +3,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			contactList: [
 				{
-					"fullName": "John Doe",
+					"full_name": "John Doe",
 					"address": "123 Main Street, Cityville",
 					"phone": "555-1234",
 					"email": "john.doe@example.com"
 				},
 				{
-					"fullName": "Jane Smith",
+					"full_name": "Jane Smith",
 					"address": "456 Oak Avenue, Townsville",
 					"phone": "555-5678",
 					"email": "jane.smith@example.com"
 				},
 				{
-					"fullName": "Bob Johnson",
+					"full_name": "Bob Johnson",
 					"address": "789 Pine Road, Villagetown",
 					"phone": "555-9101",
 					"email": "bob.johnson@example.com"
@@ -24,11 +24,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		},
 		actions: {
-			addContact:async(fullName, email, phone, address) => {
+			addContact:async(full_name, email, phone, address) => {
 				const respone = await fetch("https://playground.4geeks.com/apis/fake/contact",{
 					method:"POST",
 					body: JSON.stringify({
-						full_name: fullName,
+						full_name: full_name,
 						phone: phone,
 						email: email,
 						address: address,
@@ -40,11 +40,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await respone.json()
 				setStore({contactList:[...getStore().contactList,data]})
 			}, 
-			updateContact: async(contactId, fullName, email, phone, address) => {
+			updateContact: async(contactId, full_name, email, phone, address) => {
 				const respone = await fetch("https://playground.4geeks.com/apis/fake/contact"+ contactId,{
 					method:"PUT",
 					body: JSON.stringify({
-						full_name: fullName,
+						full_name: full_name,
 						phone: phone,
 						email: email,
 						address: address,
