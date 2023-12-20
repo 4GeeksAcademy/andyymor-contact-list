@@ -24,21 +24,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		},
 		actions: {
-			addContact:async(full_name, email, phone, address) => {
-				const respone = await fetch("https://playground.4geeks.com/apis/fake/contact",{
+			createContact: newContact => {
+
+				
+				let options = {
 					method:"POST",
-					body: JSON.stringify({
-						full_name: full_name,
-						phone: phone,
-						email: email,
-						address: address,
-						agenda_slug: "andrewAgenda",
-						
-					}),
+					body: JSON.stringify(newContact),
 					headers: {"Context-Type": "application/JSON"}
+				}
+				fetch("https://playground.4geeks.com/apis/fake/contact", options)
+				.then(respone=>{
+					if(!respone.ok)throw Error(respone.statusText);
+					return respone
 				})
-				const data = await respone.json()
-				setStore({contactList:[...getStore().contactList,data]})
+				.then(respone => console.log('successfully created', response))
+			},
+			addContact:(aNewContact)=>{
+
+			const store = getStore();
+			let reviseStore = [...store.contactList, aNewContact];
+			getActions().createContact(aNewContact);
+				
+				setStore({contactList:reviseStore})
 			}, 
 			updateContact: async(contactId, full_name, email, phone, address) => {
 				const respone = await fetch("https://playground.4geeks.com/apis/fake/contact"+ contactId,{
@@ -70,6 +77,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const respone = await fetch ("https://playground.4geeks.com/apis/fake/contact/andrewAgenda" ) 
 				const data = await respone.json()
 				setStore({contactList:data})
+			},
+			saveContact: (name, address, phone, email) => {
+				let newContact = {
+					name: name,
+					email: email,
+					phone: phone,
+					address: address,
+					agenda_slug:"andrewAgenda"
+				}
+				getActions().addContact(newContact)
 			}
 	};
 };

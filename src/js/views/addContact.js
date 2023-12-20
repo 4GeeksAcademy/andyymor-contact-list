@@ -1,14 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNaviagte } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Single = props => {
+export const Single = () => {
 	const { store, actions } = useContext(Context);
-	const [name, setName] = useState('John Doe')
-	const [email, setEmail] = useState('xxxx')
-	const [address, setAddress] = useState('xxxxx')
-	const [phone, setPhone] = useState('xxx')
+	const [name, setName] = useState('')
+	const [email, setEmail] = useState('')
+	const [address, setAddress] = useState('')
+	const [phone, setPhone] = useState('')
+	let navigate = useNaviagte()
+	const submiContact =(e)=>{
+		e.preventDefault()
+		console.log(name, email, address, phone)
+		actions.saveContact(name, email, address, phone)
+		setName('')
+		setEmail('')
+		setAddress('')
+		setPhone('')
+		navigate('/')
+	}
 	return (
 		<div className="jumbotron">
 			<div class="mb-3">
@@ -36,11 +47,11 @@ export const Single = props => {
 					Back home
 				</span>
 			</Link>
-			<button className="btn btn-primary btn-lg" href="#" role="" button onClick={()=> actions.addContact(name, email, address, phone) } >Add new contact</button>
+			<button className="btn btn-primary btn-lg" href="#" role="button" onClick={(e)=> submiContact(e)} >Add new contact</button>
 		</div>
 	);
 };
 
-Single.propTypes = {
-	match: PropTypes.object
-};
+// Single.propTypes = {
+// 	match: PropTypes.object
+// };
