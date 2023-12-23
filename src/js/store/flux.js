@@ -2,24 +2,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			contactList: [
-				{
-					"full_name": "John Doe",
-					"address": "123 Main Street, Cityville",
-					"phone": "555-1234",
-					"email": "john.doe@example.com"
-				},
-				{
-					"full_name": "Jane Smith",
-					"address": "456 Oak Avenue, Townsville",
-					"phone": "555-5678",
-					"email": "jane.smith@example.com"
-				},
-				{
-					"full_name": "Bob Johnson",
-					"address": "789 Pine Road, Villagetown",
-					"phone": "555-9101",
-					"email": "bob.johnson@example.com"
-				}
+				// {
+				// 	"full_name": "John Doe",
+				// 	"address": "123 Main Street, Cityville",
+				// 	"phone": "555-1234",
+				// 	"email": "john.doe@example.com"
+				// },
+				// {
+				// 	"full_name": "Jane Smith",
+				// 	"address": "456 Oak Avenue, Townsville",
+				// 	"phone": "555-5678",
+				// 	"email": "jane.smith@example.com"
+				// },
+				// {
+				// 	"full_name": "Bob Johnson",
+				// 	"address": "789 Pine Road, Villagetown",
+				// 	"phone": "555-9101",
+				// 	"email": "bob.johnson@example.com"
+				// }
 			]
 
 		},

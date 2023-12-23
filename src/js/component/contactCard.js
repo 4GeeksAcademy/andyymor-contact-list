@@ -1,5 +1,5 @@
 import React, { } from "react";
-
+import { Link } from "react-router-dom";
 export const ContactCard = ({ contact, index }) => (
 
   <div className="card mb-3" style={{ maxWidth: "540px" }}>
@@ -13,7 +13,7 @@ export const ContactCard = ({ contact, index }) => (
           <p className="card-text">{contact.address}</p>
           <p className="card-text">{contact.phone}</p>
           <p className="card-text">{contact.email}</p>
-
+          <Link className="btn btn-primary btn-lg" href="#" role="button" to={'editContact/'+ contact.id}>edit contact</Link> 
         </div>
       </div>
       
