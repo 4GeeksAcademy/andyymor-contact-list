@@ -17,7 +17,7 @@ export const Home = () => {
 				return(<li key={index}> <ContactCard contact = {contact} index = {index}/>  </li>)
 			})}
 		</ul>
-			<Link to={"/addContact"}>link </Link>
+			<button className="btn btn-primary btn-lg" href="#" role="button"> <Link to={"/addContact"}>link </Link>ADD CONTACT</button>
 	</div>
 	</div>
 	<button ></button>

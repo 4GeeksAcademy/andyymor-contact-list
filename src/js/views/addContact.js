@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams, useNaviagte } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Single = () => {
@@ -9,7 +9,7 @@ export const Single = () => {
 	const [email, setEmail] = useState('')
 	const [address, setAddress] = useState('')
 	const [phone, setPhone] = useState('')
-	let navigate = useNaviagte()
+	let navigate = useNavigate()
 	const submiContact =(e)=>{
 		e.preventDefault()
 		console.log(name, email, address, phone)

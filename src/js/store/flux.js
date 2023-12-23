@@ -62,8 +62,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				const data = await respone.json()
 				setStore({contactList:[...getStore().contactList,data]})
-			}
 			},
+			
 			deleteContact: async(contactId) => {
 			const respone = await fetch("https://playground.4geeks.com/apis/fake/contact"+ contactId,{
 					method:"DELETE",
@@ -88,6 +88,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				getActions().addContact(newContact)
 			}
+		},
 	};
 };
 
