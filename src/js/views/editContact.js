@@ -9,7 +9,6 @@ export const EditContact = () => {
     const [email, setEmail] = useState('')
     const [address, setAddress] = useState('')
     const [phone, setPhone] = useState('')
-    const [contact, setContact] = useState({})
     let navigate = useNavigate()
     const { id } = useParams()
 
@@ -22,41 +21,41 @@ export const EditContact = () => {
     useEffect(() => {
         async function getContact() {
             await actions.getContacts()
-            let thisContact = store.contactList.find((contact) => { contact.id === id })
-            setContact(thisContact)
+            let thisContact = store.contactList.find(contact => contact.id == id);
+            setName(thisContact.full_name)
             setEmail(thisContact.email)
             setAddress(thisContact.address)
             setPhone(thisContact.phone)
-            setContacts(store.contactList)
+
         }
         getContact()
     }, []);
 
-    const submiContact = (e) => {
+    const submitContact = (e) => {
         e.preventDefault()
-        console.log(name, email, address, phone)
-        actions.updateContact(name, email, address, phone)
+        console.log(id, name, email, address, phone)
+        actions.updateContact(id, name, email, address, phone)
 
         navigate('/')
     }
     return (
         <div className="jumbotron">
             <div className="mb-3">
-                <h1>Add a New Contact</h1>
+                <h1>Edit Contact</h1>
                 <label htmlFor="formGroupExampleInput" className="form-label">Full Name</label>
-                <input value={name} onChange={(e) => setName(e.target.value)} type="text" className="form-control" id="formGroupExampleInput" placeholder="Example input placeholder" />
+                <input value={name} onChange={(e) => setName(e.target.value)} type="text" className="form-control" id="formGroupExampleInput" placeholder={name} />
             </div>
             <div className="mb-3">
                 <label htmlFor="formGroupExampleInput2" className="form-label">Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder" />
+                <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" className="form-control" id="formGroupExampleInput2" placeholder={email} />
             </div>
             <div className="mb-3">
                 <label htmlFor="formGroupExampleInput" className="form-label">Phone</label>
-                <input value={address} onChange={(e) => setAddress(e.target.value)} type="text" className="form-control" id="formGroupExampleInput" placeholder="Example input placeholder" />
+                <input value={address} onChange={(e) => setAddress(e.target.value)} type="text" className="form-control" id="formGroupExampleInput" placeholder={address} />
             </div>
             <div className="mb-3">
-                <label htmlFor="formGroupExampleInput2" class="form-label">Address</label>
-                <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder" />
+                <label htmlFor="formGroupExampleInput2" className="form-label">Address</label>
+                <input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" className="form-control" id="formGroupExampleInput2" placeholder={phone} />
             </div>
 
             <hr className="my-4" />
@@ -66,7 +65,7 @@ export const EditContact = () => {
                     Back home
                 </span>
             </Link>
-            <button className="btn btn-primary btn-lg" href="#" role="button" onClick={(e) => submiContact(e)} >Add new contact</button>
+            <button className="btn btn-primary btn-lg" href="#" role="button" onClick={(e) => submitContact(e)} >Update contact</button>
         </div>
     );
 };

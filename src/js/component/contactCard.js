@@ -29,4 +29,3 @@ export const ContactCard = ({ contact, index }) => {
   )
 
 };
-jj

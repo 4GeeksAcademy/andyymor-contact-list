@@ -72,7 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ contactList: reviseStore })
 			},
 			updateContact: async (contactId, full_name, email, phone, address) => {
-				const respone = await fetch("https://playground.4geeks.com/apis/fake/contact" + contactId, {
+				const respone = await fetch("https://playground.4geeks.com/apis/fake/contact/" + contactId, {
 					method: "PUT",
 					body: JSON.stringify({
 						full_name: full_name,
