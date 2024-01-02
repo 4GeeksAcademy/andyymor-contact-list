@@ -1,8 +1,13 @@
-import React, { } from "react";
+import React, {useContext } from "react";
 import { Link } from "react-router-dom";
-export const ContactCard = ({ contact, index }) => (
+import { Context } from "../store/appContext";
 
-  <div className="card mb-3" style={{ maxWidth: "540px" }}>
+export const ContactCard = ({ contact, index }) => {
+  const {store, actions} = useContext(Context)
+
+  return (
+      <div className="card mb-3" style={{ maxWidth: "540px" }}>
+    {console.log(contact)}
     <div className="row g-0">
       <div className="col-md-4">
         <img src="https://xsgames.co/randomusers/avatar.php?g=male" />
@@ -14,10 +19,14 @@ export const ContactCard = ({ contact, index }) => (
           <p className="card-text">{contact.phone}</p>
           <p className="card-text">{contact.email}</p>
           <Link className="btn btn-primary btn-lg" href="#" role="button" to={'editContact/'+ contact.id}>edit contact</Link> 
+          <button className="btn btn-danger" onClick={() => actions.deleteContact(contact.id)}>DELETE</button>
         </div>
       </div>
       
     </div>
   </div>
 
-);
+  )
+
+};
+jj
